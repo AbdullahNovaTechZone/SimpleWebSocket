@@ -2,13 +2,14 @@ package com.enovatechzone.chat.dto;
 
 import lombok.*;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
-public class MessageDTO {
-    private Type type;
+public class Message {
+    private MessageType type;
     private String content;
     private String sender;
+
 }

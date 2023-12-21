@@ -1,7 +1,7 @@
 package com.enovatechzone.chat.config;
 
-import com.enovatechzone.chat.dto.MessageDTO;
-import com.enovatechzone.chat.dto.Type;
+import com.enovatechzone.chat.dto.Message;
+import com.enovatechzone.chat.dto.MessageType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;
@@ -14,21 +14,21 @@ import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 @Slf4j
 @RequiredArgsConstructor
 public class WebSocketEventListener {
-    private final SimpMessageSendingOperations messageSendingOperations;
+
+    private final SimpMessageSendingOperations messagingTemplate;
 
     @EventListener
-    public void handleWebSocketDisconnectListener(SessionDisconnectEvent sessionDisconnectEvent) {
-        StompHeaderAccessor stompHeaderAccessor = StompHeaderAccessor.wrap(sessionDisconnectEvent.getMessage());
-        String username = String.valueOf(stompHeaderAccessor.getSessionAttributes().get("username"));
-
+    public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
+        StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
+        String username = (String) headerAccessor.getSessionAttributes().get("username");
         if (username != null) {
-            log.info("User Disconnected: {}", username);
-            MessageDTO messageDTO = MessageDTO.builder()
-                    .type(Type.LEFT)
+            log.info("user disconnected: {}", username);
+            var message = Message.builder()
+                    .type(MessageType.LEAVE)
                     .sender(username)
                     .build();
-
-            messageSendingOperations.convertAndSend("/topic/public", messageDTO);
+            messagingTemplate.convertAndSend("/topic/public", message);
         }
     }
+
 }
