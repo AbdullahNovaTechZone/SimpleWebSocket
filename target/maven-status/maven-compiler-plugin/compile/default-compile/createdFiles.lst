@@ -1,0 +1,7 @@
+com\enovatechzone\chat\dto\Message$MessageBuilder.class
+com\enovatechzone\chat\dto\MessageType.class
+com\enovatechzone\chat\Application.class
+com\enovatechzone\chat\config\WebSocketConfig.class
+com\enovatechzone\chat\config\WebSocketEventListener.class
+com\enovatechzone\chat\controller\ChatController.class
+com\enovatechzone\chat\dto\Message.class
