@@ -59,6 +59,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>Simple Web Socket Application</finalName>
     </build>
 
 </project>
