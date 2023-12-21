@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.enovatechzone.chat.ApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.079 s -- in com.enovatechzone.chat.ApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.068 s -- in com.enovatechzone.chat.ApplicationTests
